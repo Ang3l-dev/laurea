@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Invito di Laurea</title>
+<meta name="description" content="Invito alla festa di laurea: degustazione di vini e pranzo alle Cantine La Contea, sull'Etna.">
+<meta property="og:title" content="Invito di Laurea">
+<meta property="og:description" content="Degustazione di vini e pranzo alle Cantine La Contea, Mascali (Etna).">
+<meta name="theme-color" content="#6b1f2e">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="is-locked">
+
+<!-- ========== BUSTA INIZIALE ========== -->
+<div class="intro" id="intro" aria-label="Busta dell'invito">
+  <p class="intro__hint">Hai ricevuto un invito</p>
+  <button class="envelope" id="openBtn" aria-label="Apri l'invito">
+    <span class="envelope__back"></span>
+    <span class="envelope__letter">
+      <span class="envelope__letter-line">Sei invitato</span>
+      <span class="envelope__letter-name" data-bind="nome"></span>
+    </span>
+    <span class="envelope__front"></span>
+    <span class="envelope__flap"></span>
+    <span class="seal"><span data-bind="iniziali"></span></span>
+  </button>
+  <p class="intro__tap">Tocca il sigillo per aprire</p>
+</div>
+
+<canvas id="confetti" aria-hidden="true"></canvas>
+
+<!-- ========== INVITO ========== -->
+<main class="invite" id="invite">
+
+  <header class="hero">
+    <p class="eyebrow reveal">Con gioia ti invito a festeggiare</p>
+    <h1 class="hero__title reveal">La mia <em>Laurea</em></h1>
+    <p class="hero__name reveal" data-bind="nome"></p>
+    <p class="hero__degree reveal"><span data-bind="corso"></span><br><span class="muted" data-bind="universita"></span></p>
+
+    <div class="hero__art reveal" aria-hidden="true">
+      <svg viewBox="0 0 400 230" class="etna">
+        <defs>
+          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#f6e7d3"/><stop offset="1" stop-color="#fbf6ee"/>
+          </linearGradient>
+          <linearGradient id="mount" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#5a4a48"/><stop offset="1" stop-color="#8a7a6f"/>
+          </linearGradient>
+          <linearGradient id="sea" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#b9cdd3"/><stop offset="1" stop-color="#8fb0ba"/>
+          </linearGradient>
+        </defs>
+        <rect width="400" height="230" fill="url(#sky)"/>
+        <circle class="sun" cx="300" cy="62" r="20" fill="#e7b96a" opacity=".85"/>
+        <path class="mount" d="M0 170 L120 92 Q160 58 178 52 Q190 47 202 52 Q222 60 262 92 L400 170 Z" fill="url(#mount)"/>
+        <path d="M178 52 Q190 47 202 52 L196 62 Q190 58 184 62 Z" fill="#f2ece4" opacity=".9"/>
+        <g class="smoke" fill="#d9cfc6">
+          <circle cx="190" cy="40" r="7"/><circle cx="200" cy="30" r="9"/><circle cx="214" cy="20" r="11"/>
+        </g>
+        <rect class="sea" x="0" y="168" width="400" height="18" fill="url(#sea)"/>
+        <path d="M0 186 Q200 172 400 186 L400 230 L0 230 Z" fill="#7d8b4f"/>
+        <g class="vines" fill="none" stroke="#4e5a2c" stroke-width="2" stroke-linecap="round">
+          <path d="M10 198 Q200 186 390 198"/>
+          <path d="M0 210 Q200 198 400 210"/>
+          <path d="M10 222 Q200 210 390 222"/>
+        </g>
+        <g class="grapes" fill="#6b1f2e">
+          <circle cx="60" cy="196" r="2.2"/><circle cx="140" cy="191" r="2.2"/><circle cx="250" cy="191" r="2.2"/><circle cx="330" cy="196" r="2.2"/>
+          <circle cx="95" cy="205" r="2.2"/><circle cx="205" cy="200" r="2.2"/><circle cx="305" cy="204" r="2.2"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="date-card reveal">
+      <span class="date-card__day" data-bind="giornoSettimana"></span>
+      <span class="date-card__num" data-bind="giorno"></span>
+      <span class="date-card__month" data-bind="meseAnno"></span>
+      <span class="date-card__count" id="countdown"></span>
+    </div>
+  </header>
+
+  <!-- PROGRAMMA -->
+  <section class="section">
+    <h2 class="section__title reveal">Il programma</h2>
+    <ol class="timeline" id="timeline"></ol>
+  </section>
+
+  <!-- LA CONTEA -->
+  <section class="section section--tinted">
+    <p class="eyebrow reveal">Il luogo</p>
+    <h2 class="section__title reveal">Cantine La Contea</h2>
+    <p class="lead reveal">Sul versante orientale dell'Etna, tra i vigneti terrazzati di Mascali, con lo sguardo che scende dal vulcano fino al mare Ionio. Brinderemo con i vini dell'Etna DOC nel palmento storico della cantina, poi ci sederemo a tavola.</p>
+
+    <div class="gallery">
+      <figure class="photo reveal" data-src="img/contea-1.jpg">
+        <svg viewBox="0 0 120 90" aria-hidden="true"><rect width="120" height="90" fill="#efe2cf"/><path d="M30 90 V45 Q60 10 90 45 V90" fill="none" stroke="#8a6a52" stroke-width="5"/><path d="M38 90 V48 Q60 20 82 48 V90" fill="#d9c2a5"/><rect x="50" y="62" width="20" height="28" rx="2" fill="#6b1f2e" opacity=".75"/></svg>
+        <figcaption>Il palmento</figcaption>
+      </figure>
+      <figure class="photo reveal" data-src="img/contea-2.jpg">
+        <svg viewBox="0 0 120 90" aria-hidden="true"><rect width="120" height="90" fill="#e7ecd9"/><path d="M0 60 L45 22 Q60 12 75 22 L120 60 Z" fill="#7a6c66"/><g stroke="#4e5a2c" stroke-width="2" fill="none"><path d="M0 70 Q60 60 120 70"/><path d="M0 80 Q60 70 120 80"/></g><g fill="#6b1f2e"><circle cx="30" cy="66" r="2"/><circle cx="70" cy="65" r="2"/><circle cx="50" cy="76" r="2"/><circle cx="95" cy="77" r="2"/></g></svg>
+        <figcaption>I vigneti sull'Etna</figcaption>
+      </figure>
+      <figure class="photo reveal" data-src="img/contea-3.jpg">
+        <svg viewBox="0 0 120 90" aria-hidden="true"><rect width="120" height="90" fill="#f3e3e1"/><path d="M45 18 H75 Q76 46 60 50 Q44 46 45 18 Z" fill="none" stroke="#5a4a48" stroke-width="2.5"/><path d="M46.5 32 H73.5 Q72 46 60 48 Q48 46 46.5 32 Z" fill="#6b1f2e"/><path d="M60 50 V72 M48 74 H72" stroke="#5a4a48" stroke-width="2.5" stroke-linecap="round"/></svg>
+        <figcaption>La degustazione</figcaption>
+      </figure>
+    </div>
+
+    <div class="map reveal">
+      <iframe title="Mappa Cantine La Contea" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=Cantine+La+Contea,+Via+Santa+Venera+Superiore+25,+Mascali+CT&output=embed"></iframe>
+    </div>
+    <p class="address reveal">Via Santa Venera Superiore 25 · Mascali (CT)</p>
+    <div class="actions reveal">
+      <a class="btn btn--ghost" target="_blank" rel="noopener"
+         href="https://www.google.com/maps/dir/?api=1&destination=Cantine+La+Contea,+Via+Santa+Venera+Superiore+25,+Mascali+CT">Indicazioni stradali</a>
+      <a class="btn btn--ghost" target="_blank" rel="noopener" href="https://www.cantinelacontea.it">Sito della cantina</a>
+    </div>
+  </section>
+
+  <!-- RSVP -->
+  <section class="section">
+    <h2 class="section__title reveal">Ci sarai?</h2>
+    <p class="lead reveal">Conferma entro il <strong data-bind="rsvpEntro"></strong>, così posso comunicare i numeri alla cantina.</p>
+    <form class="rsvp reveal" id="rsvp">
+      <label>Il tuo nome
+        <input name="nome" required autocomplete="name" placeholder="Nome e cognome">
+      </label>
+      <label>Quanti sarete?
+        <select name="persone">
+          <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+        </select>
+      </label>
+      <label>Allergie o intolleranze
+        <input name="note" placeholder="Facoltativo">
+      </label>
+      <div class="rsvp__choice">
+        <button type="submit" class="btn" value="si">Ci sarò 🥂</button>
+        <button type="submit" class="btn btn--ghost" value="no">Non posso</button>
+      </div>
+    </form>
+    <div class="actions reveal">
+      <button class="btn btn--ghost" id="calBtn">Aggiungi al calendario</button>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p class="footer__sign">Vi aspetto per brindare insieme</p>
+    <p class="footer__name" data-bind="nome"></p>
+  </footer>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
