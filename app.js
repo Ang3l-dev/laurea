@@ -10,6 +10,7 @@ const CONFIG = {
   rsvpEntro: "18 novembre",
   // WhatsApp per le conferme: prefisso internazionale senza "+" né spazi
   whatsapp: "393669028675",
+  telefono: "366 902 8675",                   // come appare nella sezione Contatti
   // In alternativa (o in aggiunta) un'email per le conferme
   email: "",
   programma: [
@@ -35,6 +36,7 @@ const values = {
   corso: CONFIG.corso,
   universita: CONFIG.universita,
   rsvpEntro: CONFIG.rsvpEntro,
+  telefono: CONFIG.telefono,
   iniziali,
   giornoSettimana: eventDate.toLocaleDateString("it-IT", { weekday: "long" }),
   giorno: String(d),
@@ -133,6 +135,17 @@ function confetti() {
   })(start);
 }
 
+/* ---- Campo età visibile solo se ci sono bambini ---- */
+$("#bambini").addEventListener("change", e => {
+  $("#etaWrap").hidden = e.target.value === "0";
+});
+
+/* ---- Contatti ---- */
+if (CONFIG.whatsapp) {
+  $("#callBtn").href = $("#telLink").href = `tel:+${CONFIG.whatsapp}`;
+  $("#waBtn").href = `https://wa.me/${CONFIG.whatsapp}`;
+}
+
 /* ---- Conferma presenza (WhatsApp o email) ---- */
 $("#rsvp").addEventListener("submit", e => {
   e.preventDefault();
@@ -140,8 +153,13 @@ $("#rsvp").addEventListener("submit", e => {
   const yes = e.submitter?.value !== "no";
   const nome = f.get("nome").trim();
   const note = f.get("note").trim();
+  const adulti = Number(f.get("adulti"));
+  const bambini = Number(f.get("bambini"));
+  const eta = f.get("eta").trim();
+  const chi = `${adulti} ${adulti === 1 ? "adulto" : "adulti"}` +
+    (bambini ? ` e ${bambini} ${bambini === 1 ? "bambino" : "bambini"}${eta ? ` (età: ${eta})` : ""}` : "");
   const msg = yes
-    ? `Ciao! Sono ${nome}, ci sarò alla tua festa di laurea il ${d} ${values.meseAnno} 🥂 Saremo in ${f.get("persone")}.${note ? ` Note: ${note}.` : ""}`
+    ? `Ciao! Sono ${nome}, ci sarò alla tua festa di laurea il ${d} ${values.meseAnno} 🥂 Saremo: ${chi}.${note ? ` Allergie/intolleranze: ${note}.` : ""}`
     : `Ciao! Sono ${nome}, purtroppo non riesco a esserci il ${d} ${values.meseAnno}. Congratulazioni di cuore! 🎓`;
 
   if (CONFIG.whatsapp) {

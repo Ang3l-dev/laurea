@@ -180,10 +180,21 @@
       <label>Il tuo nome
         <input name="nome" required autocomplete="name" placeholder="Nome e cognome">
       </label>
-      <label>Quanti sarete?
-        <select name="persone">
-          <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
-        </select>
+      <div class="rsvp__row">
+        <label>Adulti
+          <select name="adulti">
+            <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option>
+          </select>
+        </label>
+        <label>Bambini
+          <select name="bambini" id="bambini">
+            <option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+          </select>
+        </label>
+      </div>
+      <label class="rsvp__kids" id="etaWrap" hidden>Età dei bambini
+        <input name="eta" placeholder="es. 4 e 9 anni">
+        <span class="rsvp__hint">Serve per preparare il menu bambini</span>
       </label>
       <label>Allergie o intolleranze
         <input name="note" placeholder="Facoltativo">
@@ -195,6 +206,20 @@
     </form>
     <div class="actions reveal">
       <button class="btn btn--ghost" id="calBtn">Aggiungi al calendario</button>
+    </div>
+  </section>
+
+  <!-- CONTATTI -->
+  <section class="section contact">
+    <p class="eyebrow reveal">Contatti</p>
+    <h2 class="section__title reveal">Per qualsiasi cosa</h2>
+    <div class="contact__card reveal">
+      <span class="contact__label">Cellulare</span>
+      <a class="contact__phone" id="telLink" data-bind="telefono"></a>
+      <div class="actions">
+        <a class="btn" id="callBtn">Chiama</a>
+        <a class="btn btn--ghost" id="waBtn" target="_blank" rel="noopener">Scrivimi su WhatsApp</a>
+      </div>
     </div>
   </section>
 

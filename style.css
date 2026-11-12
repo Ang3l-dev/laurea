@@ -189,6 +189,20 @@ em { font-style: italic; color: var(--wine); }
 }
 .rsvp input:focus, .rsvp select:focus { outline: 2px solid var(--gold); outline-offset: 0; border-color: transparent; }
 .rsvp__choice { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 4px; }
+.rsvp__row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.rsvp__kids { animation: fadeUp .4s var(--ease) both; }
+.rsvp__kids[hidden] { display: none; }
+.rsvp__hint { font-size: .75rem; font-weight: 400; color: var(--muted); }
+
+/* contatti */
+.contact { padding-top: 16px; }
+.contact__card {
+  max-width: 420px; margin: 0 auto; padding: 24px;
+  background: var(--paper); border: 1px solid var(--line); border-radius: 16px;
+  display: grid; gap: 4px; justify-items: center;
+}
+.contact__label { font-size: .75rem; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); }
+.contact__phone { font: 600 2rem var(--serif); color: var(--wine); text-decoration: none; margin-bottom: 8px; }
 
 .footer { text-align: center; padding: 40px 0 72px; }
 .footer__sign { margin: 0; font: italic 500 1.3rem var(--serif); color: var(--muted); }
