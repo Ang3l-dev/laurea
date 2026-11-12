@@ -225,18 +225,6 @@ em { font-style: italic; color: var(--wine); }
 @keyframes scan { 0% { opacity: 0; transform: translateX(0); } 15% { opacity: 1; } 85% { opacity: 1; } 100% { opacity: 0; transform: translateX(200px); } }
 @keyframes capDrop { from { opacity: 0; transform: translateY(-50px) rotate(-14deg); } to { opacity: 1; transform: none; } }
 
-/* sezione tesi */
-.thesis__title {
-  max-width: 30ch; margin: 0 auto 18px;
-  font: 500 clamp(1.45rem, 5vw, 1.9rem)/1.25 var(--serif);
-}
-.chips { list-style: none; padding: 0; margin: 0 auto 20px; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
-.chips li {
-  padding: 6px 14px; border-radius: 999px; font-size: .82rem; font-weight: 500;
-  background: var(--paper); border: 1px solid var(--line); color: var(--wine);
-}
-.thesis__meta { margin: 0; font-size: .85rem; color: var(--muted); }
-
 .timeline li.reveal .timeline__icon { transition: transform .6s .2s var(--ease); transform: scale(.6); }
 .timeline li.reveal.is-in .timeline__icon { transform: none; }
 
