@@ -3,8 +3,8 @@
    ============================================================ */
 const CONFIG = {
   nome: "Andrea Venticinque",
-  corso: "Corso di Laurea in Ingegneria Industriale",
-  universita: "",                             // facoltativo: lascia vuoto per non mostrarla
+  corso: "Laurea in Ingegneria Industriale",
+  universita: "Università Telematica e-Campus", // facoltativo: lascia vuoto per non mostrarla
   data: "2026-11-21",                         // AAAA-MM-GG del giorno della festa
   fine: "16:00",                              // orario indicativo di fine (per il calendario)
   rsvpEntro: "18 novembre",

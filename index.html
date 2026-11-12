@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Invito di Laurea</title>
-<meta name="description" content="Invito alla festa di laurea: degustazione di vini e pranzo alle Cantine La Contea, sull'Etna.">
-<meta property="og:title" content="Invito di Laurea">
-<meta property="og:description" content="Degustazione di vini e pranzo alle Cantine La Contea, Mascali (Etna).">
+<meta name="description" content="Invito alla festa di laurea in Ingegneria Industriale di Andrea Venticinque: sabato 21 novembre alle Cantine La Contea.">
+<meta property="og:title" content="Invito di Laurea · Andrea Venticinque">
+<meta property="og:description" content="Laurea in Ingegneria Industriale: festeggiamo sabato 21 novembre alle Cantine La Contea.">
 <meta name="theme-color" content="#6b1f2e">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -43,35 +43,84 @@
     <p class="hero__degree reveal"><span data-bind="corso"></span><br><span class="muted" data-bind="universita"></span></p>
 
     <div class="hero__art reveal" aria-hidden="true">
-      <svg viewBox="0 0 400 230" class="etna">
+      <!-- Ingranaggio "visto" da una termocamera, sensori collegati e tocco da laureato -->
+      <svg viewBox="0 0 400 230" class="thermo">
         <defs>
-          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#f6e7d3"/><stop offset="1" stop-color="#fbf6ee"/>
+          <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#f4ece1"/><stop offset="1" stop-color="#fbf6ee"/>
           </linearGradient>
-          <linearGradient id="mount" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#5a4a48"/><stop offset="1" stop-color="#8a7a6f"/>
+          <radialGradient id="heat" cx=".3" cy=".3" r=".85">
+            <stop offset="0" stop-color="#fff4c2"/><stop offset=".2" stop-color="#ffc857"/>
+            <stop offset=".45" stop-color="#e9724c"/><stop offset=".72" stop-color="#a33b6b"/>
+            <stop offset="1" stop-color="#3a2a6e"/>
+          </radialGradient>
+          <linearGradient id="scale" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#3a2a6e"/><stop offset=".3" stop-color="#a33b6b"/>
+            <stop offset=".55" stop-color="#e9724c"/><stop offset=".8" stop-color="#ffc857"/>
+            <stop offset="1" stop-color="#fff4c2"/>
           </linearGradient>
-          <linearGradient id="sea" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0" stop-color="#b9cdd3"/><stop offset="1" stop-color="#8fb0ba"/>
+          <linearGradient id="scanGrad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".85"/>
+            <stop offset="1" stop-color="#fff" stop-opacity="0"/>
           </linearGradient>
+          <clipPath id="frame"><rect x="64" y="32" width="172" height="176" rx="6"/></clipPath>
         </defs>
-        <rect width="400" height="230" fill="url(#sky)"/>
-        <circle class="sun" cx="300" cy="62" r="20" fill="#e7b96a" opacity=".85"/>
-        <path class="mount" d="M0 170 L120 92 Q160 58 178 52 Q190 47 202 52 Q222 60 262 92 L400 170 Z" fill="url(#mount)"/>
-        <path d="M178 52 Q190 47 202 52 L196 62 Q190 58 184 62 Z" fill="#f2ece4" opacity=".9"/>
-        <g class="smoke" fill="#d9cfc6">
-          <circle cx="190" cy="40" r="7"/><circle cx="200" cy="30" r="9"/><circle cx="214" cy="20" r="11"/>
+        <rect width="400" height="230" fill="url(#bg)"/>
+
+        <!-- collegamenti ai sensori (sensor fusion) -->
+        <g class="links" fill="none" stroke="#b88a44" stroke-width="1.5" stroke-dasharray="3 4">
+          <path d="M207 98 C230 98 236 84 262 84"/>
+          <path d="M207 146 C230 146 236 160 262 160"/>
         </g>
-        <rect class="sea" x="0" y="168" width="400" height="18" fill="url(#sea)"/>
-        <path d="M0 186 Q200 172 400 186 L400 230 L0 230 Z" fill="#7d8b4f"/>
-        <g class="vines" fill="none" stroke="#4e5a2c" stroke-width="2" stroke-linecap="round">
-          <path d="M10 198 Q200 186 390 198"/>
-          <path d="M0 210 Q200 198 400 210"/>
-          <path d="M10 222 Q200 210 390 222"/>
+
+        <!-- ingranaggio -->
+        <g class="gear">
+          <circle class="gear__teeth" cx="150" cy="120" r="62" fill="none" stroke="#7a6d66" stroke-width="14" stroke-dasharray="10 6.23"/>
+          <circle class="gear__teeth-heat" cx="150" cy="120" r="62" fill="none" stroke="url(#heat)" stroke-width="14" stroke-dasharray="10 6.23"/>
+          <circle class="gear__body" cx="150" cy="120" r="55" fill="#d9cfc6"/>
+          <circle class="gear__heat" cx="150" cy="120" r="55" fill="url(#heat)"/>
+          <circle cx="150" cy="120" r="15" fill="#fbf6ee" stroke="#5a4a48" stroke-width="3"/>
         </g>
-        <g class="grapes" fill="#6b1f2e">
-          <circle cx="60" cy="196" r="2.2"/><circle cx="140" cy="191" r="2.2"/><circle cx="250" cy="191" r="2.2"/><circle cx="330" cy="196" r="2.2"/>
-          <circle cx="95" cy="205" r="2.2"/><circle cx="205" cy="200" r="2.2"/><circle cx="305" cy="204" r="2.2"/>
+
+        <!-- scansione della termocamera -->
+        <g clip-path="url(#frame)"><rect class="scan" x="40" y="32" width="28" height="176" fill="url(#scanGrad)"/></g>
+
+        <!-- mirino della termocamera -->
+        <g class="hud" stroke="#6b1f2e" stroke-width="2" fill="none" stroke-linecap="round">
+          <path d="M72 50 V40 H82"/><path d="M218 40 H228 V50"/><path d="M72 190 V200 H82"/><path d="M218 200 H228 V190"/>
+        </g>
+
+        <!-- punto caldo misurato -->
+        <g class="spot">
+          <circle cx="126" cy="102" r="6" fill="none" stroke="#2e2624" stroke-width="1.5"/>
+          <path d="M126 92v4M126 108v4M116 102h4M132 102h4" stroke="#2e2624" stroke-width="1.5"/>
+          <rect x="72" y="76" width="48" height="16" rx="4" fill="#2e2624" opacity=".88"/>
+          <text x="96" y="87.5" text-anchor="middle" font-family="Inter, sans-serif" font-size="9.5" font-weight="600" fill="#fff">72,4 °C</text>
+        </g>
+
+        <!-- tocco da laureato -->
+        <g class="cap">
+          <path d="M130 60 v10 q20 10 40 0 v-10" fill="#2e2624"/>
+          <polygon points="150,44 188,57 150,70 112,57" fill="#2e2624"/>
+          <path d="M150 57 L180 62 V76" fill="none" stroke="#b88a44" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="180" cy="78" r="3" fill="#b88a44"/>
+        </g>
+
+        <!-- pannello vibrazioni -->
+        <g class="panel">
+          <rect x="262" y="46" width="118" height="76" rx="8" fill="#fffdf9" stroke="#e4d8c7"/>
+          <text x="272" y="62" font-family="Inter, sans-serif" font-size="7.5" letter-spacing="1.2" fill="#7a6d66">VIBRAZIONI</text>
+          <line x1="272" y1="96" x2="370" y2="96" stroke="#e4d8c7"/>
+          <path class="wave" d="M272 96 q4 -8 8 0 t8 0 t8 0 t8 0 t8 0 l3 -22 l4 34 l3 -12 q4 -8 8 0 t8 0 t8 0 t8 0 t6 0" fill="none" stroke="#6b1f2e" stroke-width="1.8" stroke-linejoin="round"/>
+        </g>
+
+        <!-- pannello temperatura -->
+        <g class="panel panel--2">
+          <rect x="262" y="134" width="118" height="52" rx="8" fill="#fffdf9" stroke="#e4d8c7"/>
+          <text x="272" y="150" font-family="Inter, sans-serif" font-size="7.5" letter-spacing="1.2" fill="#7a6d66">TEMPERATURA</text>
+          <rect x="272" y="158" width="98" height="8" rx="4" fill="url(#scale)"/>
+          <text x="272" y="178" font-family="Inter, sans-serif" font-size="7.5" fill="#7a6d66">20°</text>
+          <text x="370" y="178" text-anchor="end" font-family="Inter, sans-serif" font-size="7.5" fill="#7a6d66">80°</text>
         </g>
       </svg>
     </div>
@@ -83,6 +132,17 @@
       <span class="date-card__count" id="countdown"></span>
     </div>
   </header>
+
+  <!-- TESI -->
+  <section class="section thesis">
+    <p class="eyebrow reveal">La tesi</p>
+    <h2 class="thesis__title reveal">Integrazione di sistemi di misura termo-meccanici e tecniche di termografia per il monitoraggio e l'ottimizzazione dei processi industriali</h2>
+    <p class="lead reveal">Termocamere e sensori tradizionali, letti insieme, per capire come stanno davvero macchine e impianti, accorgersi in anticipo delle anomalie e rendere i processi industriali più affidabili ed efficienti.</p>
+    <ul class="chips reveal">
+      <li>Termografia infrarossa</li><li>Sensor fusion</li><li>Manutenzione predittiva</li><li>Industry 4.0</li>
+    </ul>
+    <p class="thesis__meta reveal">Relatrice Prof.ssa Gloria Cosoli · A.A. 2025/2026</p>
+  </section>
 
   <!-- PROGRAMMA -->
   <section class="section">

@@ -200,30 +200,48 @@ em { font-style: italic; color: var(--wine); }
 
 @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 
-.hero__art.is-in .mount { animation: rise 1.4s var(--ease) both; transform-origin: bottom; }
-.hero__art.is-in .sun { animation: sunUp 1.6s .3s var(--ease) both; }
-.hero__art.is-in .smoke circle { animation: puff 2.4s var(--ease) both; }
-.hero__art.is-in .smoke circle:nth-child(2) { animation-delay: .25s; }
-.hero__art.is-in .smoke circle:nth-child(3) { animation-delay: .5s; }
-.vines path { stroke-dasharray: 420; stroke-dashoffset: 420; }
-.hero__art.is-in .vines path { animation: draw 1.8s .6s var(--ease) forwards; }
-.hero__art.is-in .vines path:nth-child(2) { animation-delay: .8s; }
-.hero__art.is-in .vines path:nth-child(3) { animation-delay: 1s; }
-.grapes circle { opacity: 0; }
-.hero__art.is-in .grapes circle { animation: pop .5s 1.8s var(--ease) forwards; }
+/* Illustrazione: ingranaggio, termocamera, sensori, tocco (tutto parte una volta) */
+.thermo .gear, .thermo .cap, .thermo .spot, .thermo .panel { transform-box: fill-box; transform-origin: center; }
+.gear__heat, .gear__teeth-heat, .spot, .cap, .panel, .links, .scan, .hud { opacity: 0; }
+.wave { stroke-dasharray: 200; stroke-dashoffset: 200; }
 
-@keyframes rise { from { transform: scaleY(.6); opacity: 0; } to { transform: none; opacity: 1; } }
-@keyframes sunUp { from { transform: translateY(40px); opacity: 0; } to { transform: none; opacity: .85; } }
-@keyframes puff { from { transform: translate(-6px, 10px) scale(.4); opacity: 0; } 60% { opacity: .9; } to { transform: none; opacity: .75; } }
+.hero__art.is-in .gear { animation: spinIn 2.2s var(--ease) both; }
+.hero__art.is-in .hud { animation: fadeIn .6s .4s var(--ease) forwards; }
+.hero__art.is-in .scan { animation: scan 1.6s .8s ease-in-out forwards; }
+.hero__art.is-in .gear__heat,
+.hero__art.is-in .gear__teeth-heat { animation: fadeIn 1.4s 1s var(--ease) forwards; }
+.hero__art.is-in .panel { animation: slideIn .8s .7s var(--ease) forwards; }
+.hero__art.is-in .panel--2 { animation-delay: .9s; }
+.hero__art.is-in .links { animation: fadeIn .8s 1.4s var(--ease) forwards; }
+.hero__art.is-in .wave { animation: draw 1.6s 1.2s var(--ease) forwards; }
+.hero__art.is-in .spot { animation: pop .5s 2.2s var(--ease) forwards; }
+.hero__art.is-in .cap { animation: capDrop .9s 2.5s cubic-bezier(.3, 1.4, .5, 1) forwards; }
+
+@keyframes fadeIn { to { opacity: 1; } }
 @keyframes draw { to { stroke-dashoffset: 0; } }
 @keyframes pop { from { opacity: 0; transform: scale(0); } to { opacity: 1; transform: none; } }
-.grapes circle, .smoke circle { transform-box: fill-box; transform-origin: center; }
+@keyframes spinIn { from { opacity: 0; transform: rotate(-120deg) scale(.85); } to { opacity: 1; transform: none; } }
+@keyframes slideIn { from { opacity: 0; transform: translateX(16px); } to { opacity: 1; transform: none; } }
+@keyframes scan { 0% { opacity: 0; transform: translateX(0); } 15% { opacity: 1; } 85% { opacity: 1; } 100% { opacity: 0; transform: translateX(200px); } }
+@keyframes capDrop { from { opacity: 0; transform: translateY(-50px) rotate(-14deg); } to { opacity: 1; transform: none; } }
+
+/* sezione tesi */
+.thesis__title {
+  max-width: 30ch; margin: 0 auto 18px;
+  font: 500 clamp(1.45rem, 5vw, 1.9rem)/1.25 var(--serif);
+}
+.chips { list-style: none; padding: 0; margin: 0 auto 20px; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+.chips li {
+  padding: 6px 14px; border-radius: 999px; font-size: .82rem; font-weight: 500;
+  background: var(--paper); border: 1px solid var(--line); color: var(--wine);
+}
+.thesis__meta { margin: 0; font-size: .85rem; color: var(--muted); }
 
 .timeline li.reveal .timeline__icon { transition: transform .6s .2s var(--ease); transform: scale(.6); }
 .timeline li.reveal.is-in .timeline__icon { transform: none; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-delay: 0s !important; transition-duration: .01ms !important; transition-delay: 0s !important; }
-  .vines path { stroke-dashoffset: 0; }
-  .grapes circle { opacity: 1; }
+  .wave { stroke-dashoffset: 0; }
+  .gear__heat, .gear__teeth-heat, .spot, .cap, .panel, .links, .hud { opacity: 1; }
 }
