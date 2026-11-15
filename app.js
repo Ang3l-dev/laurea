@@ -14,9 +14,8 @@ const CONFIG = {
   // In alternativa (o in aggiunta) un'email per le conferme
   email: "",
   programma: [
-    { ora: "11:00", icona: "🎓", titolo: "Arrivo in cantina", testo: "Ci ritroviamo alle Cantine La Contea, a Mascali." },
-    { ora: "11:30", icona: "🍷", titolo: "Degustazione", testo: "Visita al palmento e degustazione dei vini dell'Etna DOC." },
-    { ora: "13:00", icona: "🍽️", titolo: "Pranzo", testo: "A tavola insieme, tra i vigneti con vista sul mare." },
+    { ora: "12:30", icona: "🍷", titolo: "Giro in cantina", testo: "Appuntamento alle Cantine La Contea, a Mascali, per la visita alla cantina." },
+    { ora: "13:30", icona: "🍽️", titolo: "Pranzo", testo: "A tavola insieme, tra i vigneti con vista sul mare." },
   ],
 };
 
